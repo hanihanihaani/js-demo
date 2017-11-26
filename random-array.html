@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>生成随机大的数组</title>
+    <script>
+        function random(min,max) {
+            const tmp = max - min;
+            return Math.floor(Math.random() * tmp + min)
+        }
+        function createArray() {
+            var arr = [];
+            while (arr.length <　5) {
+                num = random(10,30);
+                console.log(num);
+                for (var i=0; i<arr.length; i++) {
+                    if (num == arr[i]){
+                        break
+                    }
+                }
+                if (i == arr.length) {
+                    arr.push(num)
+                }
+            }
+            return arr;
+        }
+        console.log(createArray());
+    </script>
+</head>
+<body>
+    
+</body>
+</html>
