@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>选项卡</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		#content div{
+			width: 200px;
+			height: 200px;
+			border: 1px solid #000;
+			display: none;
+		}
+		.active{
+			background-color: red;
+		}
+	</style>
+	<script>
+		window.onload = function(){
+			var btn = document.getElementsByTagName('input');
+			var box = document. getElementById('content');
+			var box1 = box.getElementsByTagName('div');
+			for(var i=0; i<btn.length; i++){		//首先对所有的按钮做一个遍历
+				btn[i].save = i
+			
+				btn[i].onclick = function(){		//其次是在按钮被点击时
+					for(let i = 0;i<btn.length; i++){	//在按钮被点击时，
+						btn[i].className = '';			//就清空所有按钮的class属性
+						box1[i].style.display = '';		//以及按钮对应的所有内容的display属性
+					}		
+					
+						this.className = 'active';	//然后本身的class属性改变
+						alert(this.save);
+						box1[this.save].style.display = 'block';	//及按钮对应的内容的display属性做出相应的改变。
+			 	}
+			}
+		}
+	</script>
+</head>
+<body>
+	<div id="nav">
+		<input type="button" value="新闻" class="active">
+		<input type="button" value="军事">
+		<input type="button" value="体育">
+		<input type="button" value="文化">
+	</div>
+	<div id="content">
+		<div style="display: block">新闻1</div>
+		<div>新闻2</div>
+		<div>新闻3</div>
+		<div>新闻4</div>
+	</div>
+</body>
+</html>
