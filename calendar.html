@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>月历</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		#tab{
+			width: 380px;
+			height: 700px;
+			border: 1px solid #000;
+			background-color: #eee;
+			margin: 30px auto;
+		}
+		#tab li{
+			width: 100px;
+			height: 100px;
+			border: 1px solid #000;
+			background-color: rgba(0,0,0,0.7);
+			color: #fff;
+			float: left;
+			list-style: none;
+			margin-left: 20px;
+			margin-top: 20px;
+			text-align: center;
+			line-height: 100px;
+			font-size: 30px;
+		}
+		#desc{
+			width: 380px;
+			height: 100px;
+			background-color: rgba(0,0,0,0.9);
+			margin-top: 530px;
+			color: #fff;
+		}
+	  #tab .active{
+			background-color: #fff;
+			color: black;
+		}
+	</style>
+	<script>
+	window.onload = function(){
+		var oDiv = document.getElementById('tab');
+		var oDiv1 = document.getElementById('desc');
+		var aLi = oDiv.getElementsByTagName('li');
+		var arr = ['一月干什么',
+					'二月干什么',
+					'3月干什么',
+					'4月干什么',
+					'5月干什么',
+					'6月干什么',
+					'7月干什么',
+					'8月干什么',
+					'9月干什么',
+					'10月干什么',
+					'11月干什么',
+					'12月干什么']
+		 	for(var i=0;i<aLi.length;i++){
+		 		aLi[i].index = i;
+		 		aLi[i].onmouseover = function(){
+		 			for(var j=0; j<aLi.length;j++){
+		 					aLi[j].className = '';
+		 			}
+		 			this.className = 'active';
+		 			oDiv1.innerHTML = "<h3>"+(this.index+1)+"月的活动</h3><p>"+arr[this.index]+"</p>";
+		 	}
+		 		
+		}
+	}
+	</script>
+</head>
+<body>
+	<div id="tab">
+		<ul>
+			<li class="active">1</li>
+			<li>2</li>
+			<li>3</li>
+			<li>4</li>
+			<li>5</li>
+			<li>6</li>
+			<li>7</li>
+			<li>8</li>
+			<li>9</li>
+			<li>10</li>
+			<li>11</li>
+			<li>12</li>
+		</ul>
+		<div id="desc">
+			<h3>1月的活动</h3>
+			<p>1月干什么</p>
+		</div>
+	</div>
+</body>
+</html>
