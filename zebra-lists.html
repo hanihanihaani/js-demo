@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>隔行换色的改进版</title>
+	<script>
+		window.onload = function(){
+			var oUl = document.getElementById('ul1');
+			var aLi = oUl.children;
+			for(i=0;i<aLi.length;i++){
+				
+				var sColor = '';
+				if(i%2){								//可以不写等于0，因为0的返回值为一个false
+					aLi[i].style.background = '#ccc';
+				}else{
+					aLi[i].style.background = '#eee';
+				}
+
+				aLi[i].onmouseover =function(){
+					sColor = this.style.backgroundColor;//在设置onmouseover之前就将它原来的颜色存起来。
+					this.style.background = 'red';
+				}
+				aLi[i].onmouseout = function(){
+					this.style.background = sColor;
+				}
+			}
+		}
+	</script>
+</head>
+<body>
+	<ul id="ul1">
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+	</ul>
+</body>
+</html>
