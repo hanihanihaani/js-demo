@@ -58,14 +58,14 @@
 					'10月干什么',
 					'11月干什么',
 					'12月干什么']
-		 	for(var i=0;i<aLi.length;i++){
-		 		aLi[i].index = i;
+		 	for(let i=0;i<aLi.length;i++){
+		 		// aLi[i].index = i;
 		 		aLi[i].onmouseover = function(){
 		 			for(var j=0; j<aLi.length;j++){
 		 					aLi[j].className = '';
 		 			}
 		 			this.className = 'active';
-		 			oDiv1.innerHTML = "<h3>"+(this.index+1)+"月的活动</h3><p>"+arr[this.index]+"</p>";
+		 			oDiv1.innerHTML = "<h3>"+(i+1)+"月的活动</h3><p>"+arr[i]+"</p>";
 		 	}
 		 		
 		}
