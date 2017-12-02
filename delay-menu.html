@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>延时菜单</title>
+	<style>
+	*{
+		margin: 0;
+		padding: 0;
+	}
+		#div1{
+			width: 100px;
+			height: 300px;
+			background-color: red;
+			float: left;
+		}
+		#div2{
+			width: 200px;
+			height: 300px;
+			background-color: #eee;
+			float: left;
+			margin-left: 20px;
+			display: none;
+		}
+	</style>
+	<script>
+		window.onload = function(){
+			var oDiv = document.getElementById('div1');
+			var oDiv1 = document.getElementById('div2');
+			var timer = null; 
+				oDiv.onmouseover = function(){
+					// clearTimeout(timer);				//紧接第二步，由于加了定时器，导致鼠标在两个盒子之间移动时，第二个盒子还会消失，这时就需要清除这个定时器。
+					oDiv1.style.display = 'block'; 
+				}										//第一步
+				oDiv.onmouseout = function(){
+					timer = setTimeout(function(){		//第四步，在鼠标从第一个盒子移到第二个盒子上时，第二个盒子会消失，为了消除这种效果，需要设置一个定时器。
+						oDiv1.style.display = 'none';	//第三步，在鼠标从第一个盒子上移走时，让第二个盒子消失。
+					},500)	
+				}
+				oDiv1.onmouseout = function(){
+					timer = setTimeout(function(){
+						oDiv1.style.display = 'none';	//第二步，但是由于两个盒子之间有距离，所以第二个盒子在消失的时候									会有一个延迟，此时就需要加一个定时器，来消除这个延迟。
+					},500);
+				}		
+				oDiv1.onmouseover = function(){
+					clearTimeout(timer);				//由于第四步加了定时器，第二个盒子还会在半秒后消失，所以要在第二个盒子onmouseover时来关掉第四步加的定时器。
+				}	
+		}
+	</script>
+</head>
+<body>
+	<div id="div1"></div>
+	<div id="div2"></div>
+</body>
+</html>
