@@ -23,8 +23,8 @@
 			var btn = document.getElementsByTagName('input');
 			var box = document. getElementById('content');
 			var box1 = box.getElementsByTagName('div');
-			for(var i=0; i<btn.length; i++){		//首先对所有的按钮做一个遍历
-				btn[i].save = i
+			for(let i=0; i<btn.length; i++){		//首先对所有的按钮做一个遍历
+				// btn[i].save = i
 			
 				btn[i].onclick = function(){		//其次是在按钮被点击时
 					for(let i = 0;i<btn.length; i++){	//在按钮被点击时，
@@ -33,8 +33,8 @@
 					}		
 					
 						this.className = 'active';	//然后本身的class属性改变
-						alert(this.save);
-						box1[this.save].style.display = 'block';	//及按钮对应的内容的display属性做出相应的改变。
+						alert(i);
+						box1[i].style.display = 'block';	//及按钮对应的内容的display属性做出相应的改变。
 			 	}
 			}
 		}
