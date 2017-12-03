@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>js--选项卡2</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		#div1 div{
+			width: 200px;
+			height: 200px;
+			border: 1px solid #000;
+			display: none;
+		}
+		#div1 #div2{
+			display: block;
+		}
+		#div1 .active{
+			background: red;
+		}
+	</style>
+	<script>	
+		// var aBtn = null;
+		// var aDiv = null;
+		window.onload = function(){
+				new Tab("div1");
+		}
+		function Tab(id){
+			var _self = this;
+			var oDiv = document.getElementById(id);
+			this.aBtn = oDiv.getElementsByTagName("input");
+			this.aDiv = oDiv.getElementsByTagName("div");
+			
+				for(var i=0;i<this.aBtn.length;i++){
+					this.aBtn[i].index = i;
+					this.aBtn[i].onclick = function(){
+						_self.fnClick(this);
+						// console.log(this);
+					};
+				}
+		}
+		Tab.prototype.fnClick =  function(aBtn){
+			for(var i=0;i<this.aBtn.length;i++){
+				console.log(this);
+				this.aBtn[i].className = "";
+				this.aDiv[i].style.display = "none";
+			}
+				aBtn.className = "active";
+				this.aDiv[aBtn.index].style.display = "block";
+				// console.log(this);
+			}
+	</script>
+</head>
+<body>
+	<div id="div1">
+		<input type="button" id="btn" value="一月新番" class="active">
+		<input type="button" id="btn" value="二月新番">
+		<input type="button" id="btn" value="三月新番">
+		<input type="button" id="btn" value="四月新番">
+		<div id="div2">01</div>
+		<div>02</div>
+		<div>03</div>
+		<div>04</div>
+	</div>
+</body>
+</html>
