@@ -1,0 +1,153 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>	轮播图</title>
+	<style type="text/css">
+		*{
+			margin: 0;
+			padding: 0;	
+		}
+		div{
+			width: 700px;	
+			height: 400px;	
+			margin: 50px auto;
+			position: relative;
+		}
+		#ul1{
+			list-style: none;
+		}
+		img{
+			width: 700px;
+			height: 400px;	
+			position: absolute;
+			top: 0;
+			left: 0;		
+		}
+		#ul1 img:first-child{
+			z-index: 1;
+			opacity: 1;
+		}
+		span{
+			width: 40px;
+			height: 30px;	
+			background-color: black;
+			display: block;
+			color: white;
+			text-align: center;
+			line-height: 30px;
+			font-size: 23px;
+			cursor: pointer;
+		}
+		.left{
+			position: absolute;
+			top: 165px;
+			left: 0px;
+			z-index: 50;
+		}
+		.right{
+			position: absolute;
+			top: 165px;
+			right: 0;
+			z-index: 50;
+		}
+		#ul2{
+			list-style: none;
+			width: 100px;
+			position: absolute;	
+			left: 50%;
+			margin-left: -50px;
+			bottom: 10px;
+			z-index: 100;
+		}
+		#ul2 li{
+			width: 20px;	
+			float: left;
+			background-color: rgba(255,255,0,0.2);
+			color: blue;
+			text-align: center;
+			border: 1px solid #000;
+			box-sizing: border-box;
+			cursor: pointer;	
+		}
+		#ul2 .active{
+			background-color:yellow;
+		}
+	</style>
+	<script src='web.js/运动.js'></script>
+	<script>
+		window.onload = function(){
+			var aLi = document.getElementById('ul2').children;
+			var aImg = document.getElementById('ul1').children;
+			var oPre = document.getElementById('pre');
+			var oNext = document.getElementById('next');
+			var oDiv = document.getElementById('div1');
+				var now = 0	;	
+				for(var i=0;i<aLi.length;i++){
+					aLi[i].save = i;
+					aLi[i].onclick = function(){
+						now = this.save;
+						tab();
+					}
+				}
+				function tab(){
+					for(var i=0;i<aLi.length;i++){
+							aLi[i].className = '';
+							aImg[i].style.zIndex = 1;
+							aImg[i].style.opacity = 0.3;
+						}
+						aLi[now].className = 'active';
+						aImg[now].style.zIndex = 40;
+						// aImg[this.save].style.opacity = 1;
+						move(aImg[now],{opacity:100});
+				}
+				oNext.onclick = function(){
+					now++;
+					if(now == aLi.length){	//如果now等于图片的数量，就使now等于0，，即从第一张开始循环。
+						now = 0;			
+					}
+					tab();
+				}
+				oPre.onclick = function(){
+					now--;
+					if(now < 0){	//如果now小于0，即已经循环到第一张图片，就使now等于aLi 的length减去1，从最后一张图片在开始循环。
+						now = aLi.length - 1;
+					}
+					tab();
+				}
+				timer = setInterval(function(){
+					oNext.onclick();
+				},3000);
+				oDiv.onmouseover = function(){
+					clearInterval(timer);
+				}
+				oDiv.onmouseout = function(){
+					timer = setInterval(function(){
+					oNext.onclick();
+				},3000);
+				}
+		}
+	</script>
+</head>
+<body>
+	<div id="div1">	
+		<div id="ul1">
+			<img src="liu/o1.jpg" alt="">
+			<img src="liu/23.jpg" alt="">
+			<img src="liu/24.jpg" alt="">
+			<img src="liu/6.jpg" alt="">
+			<img src="liu/7.jpg" alt="">
+		</div>
+		
+		<span class="left" id="pre">&lt;</span>
+		<span class="right" id="next">&gt;</span>
+		<ul id="ul2">
+			<li class="active">1</li>
+			<li>2</li>
+			<li>3</li>
+			<li>4</li>
+			<li>5</li>
+		</ul>
+	</div>
+</body>
+</html>
