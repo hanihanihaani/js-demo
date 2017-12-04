@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>鼠标拖动物体不超过浏览器的可视区域</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		#div1{
+			width: 500px;
+			height: 500px;
+			background-color: red;
+			margin: 50px auto;
+			position: relative;
+		}
+		#div2{
+			width: 100px;
+			height: 100px;
+			background-color: yellow;
+			position: absolute;
+			top: 0;
+			left: 0;
+		}
+	</style>
+	<script>
+		window.onload = function(){
+			var oDiv = document.getElementById('div2');
+			var oDiv1 = document.getElementById('div1');
+			// alert(oDiv1.offsetTop);	
+			// alert(oDiv1.offsetLeft);
+				oDiv.onmousedown = function(ev){
+					var oEvent = ev || event;
+					var iDis = oEvent.clientX - oDiv.offsetLeft;
+					var iDis1 = oEvent.clientY - oDiv.offsetTop;
+					 document.onmousemove = function(ev){
+					var oEvent = ev || event;
+						var iLeft = oEvent.clientX- iDis;
+						var iTop = oEvent.clientY - iDis1;
+
+						if(iLeft<50){
+							iLeft =0;
+						}else if((oDiv1.offsetWidth - oDiv.offsetWidth  - iLeft)<50){
+							iLeft = oDiv1.offsetWidth - oDiv.offsetWidth;
+						}
+
+						if(iTop < 50){
+							iTop = 0;
+						}else if( (oDiv1.offsetHeight - oDiv.offsetHeight - iTop) <50){
+							iTop = oDiv1.offsetHeight - oDiv.offsetHeight;
+						}
+					
+					oDiv.style.left = iLeft  + 'px';
+					 oDiv.style.top = iTop + 'px';
+				 }
+				 document.onmouseup = function(){
+				 	document.onmousemove = null;
+				 	document.onmouseup = null;
+				 }
+				}
+				
+
+		}
+	</script>
+</head>
+<body>
+	<div id="div1">
+		<div id="div2"></div>
+	</div>
+</body>
+</html>
