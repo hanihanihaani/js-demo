@@ -16,4 +16,4 @@ some example of js
 
 选项卡[demo](https://hanihanihaani.github.io/js-demo/tab.html)
 
-各行换色[demo](https://hanihanihaani.github.io/js-demo/zebra-list.html)
+隔行换色[demo](https://hanihanihaani.github.io/js-demo/zebra-lists.html)
