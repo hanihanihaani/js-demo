@@ -12,3 +12,8 @@ some example of js
 
 拖拽[demo](https://hanihanihaani.github.io/js-demo/drag-1.html)
 
+轮播图[demo](https://hanihanihaani.github.io/js-demo/carousel-1.html)
+
+选项卡[demo](https://hanihanihaani.github.io/js-demo/tab.html)
+
+各行换色[demo](https://hanihanihaani.github.io/js-demo/zebra-list.html)
