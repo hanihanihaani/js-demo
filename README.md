@@ -20,4 +20,4 @@ some example of js
 
 [搜索框](https://hanihanihaani.github.io/js-demo/serach.html)
 
-[键盘上下键控制内容的选择](https://hanihanihaani.github.io/js-demo/键盘控制选择.html)
+[键盘方向键控制选择内容](https://hanihanihaani.github.io/js-demo/键盘控制选择.html)
